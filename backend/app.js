@@ -35,10 +35,11 @@ app.use('*', cors(options));
 app.use(express.json());
 app.use(helmet());
 app.use(requestLogger);
-app.get('/crash-test', () => {
+app.get('/crash-test', (req, res) => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
+  res.send({ message: 'Сервер не работает, приходите завтра' });
 });
 app.post('/signin', celebrate({
   body: Joi.object().options({ abortEarly: false }).keys({
