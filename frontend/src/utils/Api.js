@@ -101,7 +101,7 @@ class Api {
 // });
 
 const createApi = (token) => new Api({
-  baseUrl: "http://localhost:3000",
+  baseUrl: "https://tashkent-staartje.nomoredomains.rocks",
   headers: {
     authorization: `Bearer ${token}`,
     "Content-Type": "application/json",

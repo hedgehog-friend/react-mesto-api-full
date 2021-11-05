@@ -1,5 +1,5 @@
 import UnauthorizedError from '../errors/UnauthorizedError';
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://tashkent-staartje.nomoredomains.rocks";
 
 const handleResponse = (res) => {
   if (!res.ok) {
