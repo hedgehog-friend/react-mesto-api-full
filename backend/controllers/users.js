@@ -8,6 +8,9 @@ const ConflictError = require('../errors/ConflictError');
 const NotFoundError = require('../errors/NotFoundError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+const jwtSecret = NODE_ENV === 'production' ? JWT_SECRET : 'de-beste-sleutel';
+
 const getUsers = (req, res, next) => User.find({})
   .then((users) => res.status(200).send(users))
   .catch((err) => {
@@ -70,7 +73,7 @@ const login = (req, res, next) => {
         {
           _id: user._id,
         },
-        'de-beste-sleutel',
+        jwtSecret,
         { expiresIn: '7d' },
       );
       res.send({ token });
